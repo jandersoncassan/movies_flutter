@@ -26,12 +26,12 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
+    return Scaffold(//muito importante que todas as telas estejam em um scallfold
+      body: Stack( //utilizamos para expandir
+        fit: StackFit.expand, //expandindo a imagem
         children: <Widget>[
-          BgLogin(),
-          _body()
+          BgLogin(),//por baixo
+          _body() //por cima
         ],
       ),
     );
@@ -74,8 +74,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             StreamBuilder<bool>(
-              stream: _bloc.progressStream,
-              initialData: false,
+              stream: _bloc.progress.stream,
+              initialData: false, //colocamos esse dado como false para não precisar tratar com if (snapshot.hasData)
               builder: (context, snapshot) {
                 return Container(
                   margin: EdgeInsets.only(top: 16),
@@ -110,19 +110,19 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _onClickLogin() async {
-    if (!_formKey.currentState.validate()) {
+    if (!_formKey.currentState.validate()) { //validamos os campos do formulario através dos validators que passamos nos campos
       return;
     }
 
     // Salva o form
-    _formKey.currentState.save();
+    _formKey.currentState.save(); //salvamos as informações dos campos, ele chama a função onsave()
 
     print("Login: ${_input.login}, senha: ${_input.senha}");
 
     final response = await _bloc.login(_input);
 
     if (response.isOk()) {
-      pushReplacement(context, HomePage());
+      pushReplacement(context, HomePage()); //substituimos a rota de login pelo widget da homepage(), a partir desse momento o login não existe mais o flutter ira chamar o dispose
       print("OK!");
     } else {
       alert(context, "Filmes", "Erro de login");
@@ -142,6 +142,6 @@ class _LoginPageState extends State<LoginPage> {
   void dispose() {
     super.dispose();
 
-    _bloc.close();
+    _bloc.close(); //limpamos a memória, nesse momento a tela de login não existirá mais !
   }
 }

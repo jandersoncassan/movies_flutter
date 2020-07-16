@@ -35,7 +35,7 @@ class AppText extends StatelessWidget {
 //            fontSize: 18,
 //          ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(22),
+            borderRadius: BorderRadius.circular(22), // borda arredondada
           ),
           errorStyle: TextStyle(fontSize: 18)),
     );
