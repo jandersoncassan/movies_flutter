@@ -9,7 +9,7 @@ class FavoritosBloc extends SimpleBloc<List<Movie>> {
         add(null);
       }
 
-      final db = MovieDB.getInstance();
+      final db = MovieDB.getInstance(); //buscamos do banco de dados
       final movies = await db.getMovies();
 
       add(movies);

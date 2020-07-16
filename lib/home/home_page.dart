@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      blocs: [
+      blocs: [ //declaramos esses blocs aqui para podermos utilizar a lib blocprovider, muito legal !
         Bloc((i) => MoviesBloc()),
         Bloc((i) => FavoritosBloc()),
       ],
@@ -57,8 +57,8 @@ class _HomePageState extends State<HomePage>
         body: TabBarView(
           controller: tabController,
           children: [
-            TabMovies(), //responsável pels exibição dos filmes
-            TabFavoritos(),
+            TabMovies(), //responsável pels exibição dos filmes, buscamos do webservive
+            TabFavoritos(), // responsavel por favoritos, buscamos do banco de dados
           ],
         ),
         drawer: DrawerMenu(),

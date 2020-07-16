@@ -12,9 +12,9 @@ class MoviePage extends StatefulWidget {
 }
 
 class _MoviePageState extends State<MoviePage> {
-  final _bloc = MovieBloc();
+  final _bloc = MovieBloc(); //bloc local, nesse caso não utilizamos o provider, porque esse cara tem o escopo somete nessa tela, ao sair da tela eliminamos ele , esse caso precisamos chamar o dispose lá em baixo !
 
-  Movie get movie => widget.movie;
+  Movie get movie => widget.movie; //é uma forma de deixar facil a utilização do que recebemos no construtor da classe
 
   @override
   void initState() {
@@ -32,17 +32,17 @@ class _MoviePageState extends State<MoviePage> {
 
   _body() {
     return CustomScrollView(slivers: <Widget>[
-      SliverAppBar(
-        backgroundColor: Colors.deepOrange,
-        expandedHeight: 350,
-        pinned: false,
+      SliverAppBar( //esse widget é muito legal, tem um lance da rolagem e
+        backgroundColor: Colors.deepOrange, //app bar, quando houver a rolagem pra cima
+        expandedHeight: 350, // esse tamanho, dai precisamos ver qual o layout para cada situação
+        pinned: false, //queremos que o app bar fique oculto e só apareça no momento da rolagem, se colocar 'true' ela fica direto ao fazer o scroll
         actions: <Widget>[
           IconButton(
             icon: StreamBuilder<bool>(
-              initialData: false,
-              stream: _bloc.getFavoritos,
+              initialData: false, //já ssumimos 'false' para caso ainda não esteja 'favoritado' o coração apareça sem a cor vermelha
+              stream: _bloc.getFavoritos, //fica ligado na stream para verificar se é true ou false, no onclick setamos esses valores
               builder: (context, snapshot) {
-                return Icon(
+                return Icon( //icone do coração para favoritar
                   Icons.favorite,
                   size: 34,
                   color: snapshot.data ? Colors.red : Colors.white,

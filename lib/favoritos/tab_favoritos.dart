@@ -13,10 +13,10 @@ class TabFavoritos extends StatefulWidget {
 }
 
 class _TabFavoritosState extends State<TabFavoritos>
-    with AutomaticKeepAliveClientMixin<TabFavoritos> {
+    with AutomaticKeepAliveClientMixin<TabFavoritos> { // AutomaticKeepAliveClientMixin mantem o estado
 
   @override
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => true; //precisamos disso para configurar a regra de manter o estado
 
   FavoritosBloc get bloc => BlocProvider.getBloc<FavoritosBloc>();
 

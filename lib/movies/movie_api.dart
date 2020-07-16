@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 class MoviesApi {
   static bool FAKE = false;
 
-  static Future<List<Movie>> getMovies() async {
+  static Future<List<Movie>>  getMovies() async {
 //    await Future.delayed(Duration(seconds: 5));
 
     final url =

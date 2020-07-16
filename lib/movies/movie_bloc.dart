@@ -41,7 +41,7 @@ class MovieBloc {
       }
     } finally {
       // Atualiza o bloc de favoritos
-      final favoritosBloc = BlocProvider.getBloc<FavoritosBloc>();
+      final favoritosBloc = BlocProvider.getBloc<FavoritosBloc>(); //aqui é o segredo mágico que conseguimos atualizar a tela anterior, ela "escuta" essa stream!
       favoritosBloc.fetch();
     }
   }

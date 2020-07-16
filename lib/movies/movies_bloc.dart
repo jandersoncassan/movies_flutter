@@ -6,7 +6,7 @@ class MoviesBloc extends SimpleBloc {
   Future fetch({bool isRefresh = false}) async {
     try {
       if (isRefresh) {
-        add(null);
+        add(null); // adicional o null, para garantir a consistência do circularProgress no hasData !!
       }
 
       final movies = await MoviesApi.getMovies();

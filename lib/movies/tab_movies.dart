@@ -13,38 +13,41 @@ class TabMovies extends StatefulWidget {
 }
 
 class _TabMoviesState extends State<TabMovies>
-    with AutomaticKeepAliveClientMixin<TabMovies> {
+    with AutomaticKeepAliveClientMixin<TabMovies> { //AutomaticKeepAliveClientMixin mantem o estado
 
   @override
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => true; //manter estado, não ficar atualizando toda hora
 
+  //BlocProvider tem a responsabilidade de fazer a gestão do estado, chamando o dispose e etc, para isso funcionar, precisamos declarar esses blocks, nesse caso
+  //declaramos no arquivo home_page.dart, porque ele só chama o dispose quando a minha tela que declara não estiver mais em memória,
+  // mas poderia ser no arquivo main tbm sem problemas! mas dai só seria chamado o dispose se saissemos do aplicativo
   final bloc = BlocProvider.getBloc<MoviesBloc>();
 
   @override
   void initState() {
     super.initState();
 
-    bloc.fetch();
+    bloc.fetch(); //chamaos o fetch aqui para carregar a lista de filmes
   }
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: bloc.stream,
+      stream: bloc.stream, //ficamos escutando a stream para atualização
       builder: (context, snapshot) {
-        if (snapshot.hasError) {
+        if (snapshot.hasError) { //tratamos o erro com hasError para seguir o padrão qdo utilizamos Stream
           // Erro
           return Center(
             child: TextError(
-              snapshot.error,
-              onRefresh: _onRefreshError,
+              snapshot.error, //mensagem de erro que adicionamos lá na integração
+              onRefresh: _onRefreshError, // ao clicar tentamos buscar a lista novamente
             ),
           );
         }
 
         if (!snapshot.hasData) {
           return Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(), // tratamos lá no bloc, quando for refresh adicionamos o null para mostrar esse lance
           );
         }
 
