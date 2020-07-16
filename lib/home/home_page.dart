@@ -14,14 +14,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin<HomePage> {
+    with SingleTickerProviderStateMixin<HomePage> { //mantemos o estado das abas
   TabController tabController;
 
   @override
   void initState() {
     super.initState();
 
-    tabController = TabController(length: 2, vsync: this);
+    tabController = TabController(length: 2, vsync: this); //02 'abas'
   }
 
   @override
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage>
         body: TabBarView(
           controller: tabController,
           children: [
-            TabMovies(),
+            TabMovies(), //responsável pels exibição dos filmes
             TabFavoritos(),
           ],
         ),

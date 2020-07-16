@@ -74,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             StreamBuilder<bool>(
               stream: _bloc.progress.stream,
-              initialData: false,
+              initialData: false, // colocamos esse atributo inicial para não precisar fazer if(snapshot.hasdata)
               builder: (context, snapshot) {
 
                 return Container(

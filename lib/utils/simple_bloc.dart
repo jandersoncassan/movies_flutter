@@ -6,12 +6,12 @@ class SimpleBloc<T> extends BlocBase {
   final progress = ProgressBloc();
 
   // stream
-  final _controller = BehaviorSubject<T>();
-  get stream => _controller.stream;
+  final _controller = BehaviorSubject<T>(); //BehaviorSubject controla todos streams do dart
+  get stream => _controller.stream; // os ouvintes precisam dessa stream ficam ecutando
 
-  get add => _controller.sink.add;
+  get add => _controller.sink.add; //adiciona os objetos
 
-  get addError => _controller.sink.addError;
+  get addError => _controller.sink.addError; //adicviona os objetos de erro
 
   @override
   void dispose() {

@@ -10,11 +10,11 @@ class DrawerMenu extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text("Ricardo"),
-              accountEmail: Text("rlecheta@gmail.com"),
+              accountName: Text("Janderson Cassan"),
+              accountEmail: Text("jande.max@gmail.com"),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage(
-                  "https://i.udemycdn.com/user/200_H/52282350_aadd.jpg",
+                  "https://d1vq0ypifqihlw.cloudfront.net/assets/img/myphoto.jpg",
                 ),
               ),
             ),
