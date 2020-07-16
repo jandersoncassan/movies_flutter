@@ -1,7 +1,11 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=C:\flutter"
+<<<<<<< HEAD
 export "FLUTTER_APPLICATION_PATH=C:\Desenvolvimento\workspace_android\movies_flutter"
+=======
+export "FLUTTER_APPLICATION_PATH=C:\github\flutter\movies_flutter"
+>>>>>>> 90a799c823f1357c6eeeaedb12f78acf21207972
 export "FLUTTER_TARGET=lib\main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build\ios"
